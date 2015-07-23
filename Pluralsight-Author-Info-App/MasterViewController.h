@@ -13,6 +13,9 @@
 #import <CoreData/CoreData.h>
 
 @interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+{
+    NSString* watchValue;
+}
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 

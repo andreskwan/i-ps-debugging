@@ -22,6 +22,7 @@
 		40D89B0117AFC720001E2AF5 /* Pluralsight_Author_Info_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40D89AFF17AFC720001E2AF5 /* Pluralsight_Author_Info_App.xcdatamodeld */; };
 		40D89B0417AFC720001E2AF5 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D89B0317AFC720001E2AF5 /* MasterViewController.m */; };
 		40D89B0717AFC720001E2AF5 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D89B0617AFC720001E2AF5 /* DetailViewController.m */; };
+		40D89B0E17AFF0EE001E2AF5 /* EmpireStateBuilding.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 40D89B0D17AFF0EE001E2AF5 /* EmpireStateBuilding.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		40D89B0317AFC720001E2AF5 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		40D89B0517AFC720001E2AF5 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		40D89B0617AFC720001E2AF5 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		40D89B0D17AFF0EE001E2AF5 /* EmpireStateBuilding.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EmpireStateBuilding.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		40D89AD317AFC71F001E2AF5 = {
 			isa = PBXGroup;
 			children = (
+				40D89B0D17AFF0EE001E2AF5 /* EmpireStateBuilding.gpx */,
 				40D89AE717AFC71F001E2AF5 /* Pluralsight-Author-Info-App */,
 				40D89ADE17AFC71F001E2AF5 /* Frameworks */,
 				40D89ADD17AFC71F001E2AF5 /* Products */,
@@ -132,6 +135,7 @@
 				40D89AD817AFC71F001E2AF5 /* Sources */,
 				40D89AD917AFC71F001E2AF5 /* Frameworks */,
 				40D89ADA17AFC71F001E2AF5 /* Resources */,
+				400C23B717B3B601008CC8C4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -179,10 +183,27 @@
 				40D89AF817AFC720001E2AF5 /* Default-568h@2x.png in Resources */,
 				40D89AFB17AFC720001E2AF5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				40D89AFE17AFC720001E2AF5 /* MainStoryboard_iPad.storyboard in Resources */,
+				40D89B0E17AFF0EE001E2AF5 /* EmpireStateBuilding.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		400C23B717B3B601008CC8C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40D89AD817AFC71F001E2AF5 /* Sources */ = {
@@ -326,6 +347,7 @@
 				40D89B0C17AFC720001E2AF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

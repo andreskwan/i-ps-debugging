@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    watchValue = @"and again!";
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -38,6 +39,7 @@
 
 - (void)didReceiveMemoryWarning
 {
+    //MARK: Check out this piece of code!!!
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -55,6 +57,7 @@
     // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
+        //TODO: Put new logging framework in here
          // Replace this implementation with code to handle the error appropriately.
          // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -62,7 +65,7 @@
     }
 }
 
-#pragma mark - Table View
+#pragma mark - Table View Section Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -71,14 +74,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //FIXME: This needs fixing!
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
+
+#pragma mark - Table View Cell Methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
+    NSString* moreSimpleType = @"Foo";
+    int verySimpleType = 1;
+    watchValue = @"cellForRowAtIndexPath value";
     return cell;
 }
 
@@ -96,7 +105,7 @@
         
         NSError *error = nil;
         if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
+             // Replace this implementation with code to handle the error appropriately.//
              // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
@@ -121,6 +130,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        watchValue = @"yet a different Value";
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [[segue destinationViewController] setDetailItem:object];
